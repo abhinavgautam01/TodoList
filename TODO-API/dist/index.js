@@ -56,17 +56,17 @@ app.use((0, cors_1.default)());
 // Create Database Connection for MariaDB
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "mariadb",
-    host: process.env.DB_HOST || "localhost",
-    port: Number(process.env.DB_PORT) || 3306,
-    username: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || "",
-    database: process.env.DB_NAME || "todo_db",
-    synchronize: true, // Set to false in production
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    synchronize: false, // Set to false in production
     logging: true,
     entities: [tasks_entity_1.Task], // Adjust entity path based on your structure
 });
 // Define server port
-const port = process.env.PORT || 3200;
+const port = process.env.PORT;
 // Initialize Database Connection
 exports.AppDataSource.initialize()
     .then(() => __awaiter(void 0, void 0, void 0, function* () {
